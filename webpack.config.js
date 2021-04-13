@@ -1,28 +1,28 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const ROOT = __dirname;
 
 module.exports = {
-  mode: "development",
+  mode: 'development',
   devServer: {
-    contentBase: "./dist",
+    contentBase: './dist',
     hot: true,
     open: true,
     historyApiFallback: true,
     port: 3000,
   },
   output: {
-    filename: "bundle.js",
-    path: path.resolve(ROOT, "dist"),
+    filename: 'bundle.js',
+    path: path.resolve(ROOT, 'dist'),
   },
 
   entry: {
-    main: "./src/index.js",
+    main: './src/index.js',
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(ROOT, "public/index.html"),
+      template: path.join(ROOT, 'public/index.html'),
     }),
   ],
   module: {
@@ -30,15 +30,15 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: "babel-loader",
+        use: 'babel-loader',
       },
       {
-        test: /\.(scss|css)$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(svg|png|jpg|gif)$/,
-        use: "file-loader",
+        use: 'file-loader',
       },
     ],
   },
