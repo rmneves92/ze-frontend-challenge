@@ -4,21 +4,25 @@ import Header from './components/header/index';
 import Footer from './components/footer/index';
 import HomePage from './pages/home/index';
 import ProductsPage from './pages/products/index';
+import { ApolloProvider } from '@apollo/client';
+import apolloClient from './services/apollo';
 
 function App() {
   return (
-    <div>
-      <Header></Header>
+    <ApolloProvider client={apolloClient}>
+      <div>
+        <Header></Header>
 
-      <BrowserRouter>
-        <Switch>
-          <Route path="/" exact component={HomePage} />
-          <Route path="/produtos" component={ProductsPage} />
-        </Switch>
-      </BrowserRouter>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/" exact component={HomePage} />
+            <Route path="/produtos" component={ProductsPage} />
+          </Switch>
+        </BrowserRouter>
 
-      <Footer></Footer>
-    </div>
+        <Footer></Footer>
+      </div>
+    </ApolloProvider>
   );
 }
 
