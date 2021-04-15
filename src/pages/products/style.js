@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
 export const ProductWrapper = styled.div`
-  border: 2px dashed black;
+  height: 100vh;
+  background-color: green;
 `;

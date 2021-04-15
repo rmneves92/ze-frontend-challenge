@@ -1,26 +1,38 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Header from './components/header/index';
+import Navbar from './components/navbar/index';
 import Footer from './components/footer/index';
 import HomePage from './pages/home/index';
 import ProductsPage from './pages/products/index';
 import { ApolloProvider } from '@apollo/client';
 import apolloClient from './services/apollo';
+import GlobalStyle from './styles/global';
+
+import styled from 'styled-components';
+
+const Content = styled.div`
+  min-height: 100vh;
+  padding: 50px 0;
+  background-image: linear-gradient(180deg, #ffc500 46%, #00d7ff 100%);
+`;
 
 function App() {
   return (
     <ApolloProvider client={apolloClient}>
       <div>
-        <Header></Header>
+        <Navbar />
 
-        <BrowserRouter>
-          <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/produtos" component={ProductsPage} />
-          </Switch>
-        </BrowserRouter>
+        <Content>
+          <BrowserRouter>
+            <Switch>
+              <Route path="/" exact component={HomePage} />
+              <Route path="/produtos" component={ProductsPage} />
+            </Switch>
+          </BrowserRouter>
+        </Content>
 
-        <Footer></Footer>
+        <Footer />
+        <GlobalStyle />
       </div>
     </ApolloProvider>
   );

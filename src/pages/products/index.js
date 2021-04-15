@@ -4,9 +4,10 @@ import ProductsList from '../../components/productsList/index';
 
 const ProductsPage = (props) => {
   return (
-    <div>
+    <ProductWrapper>
+      <h1>Produtos</h1>
       <ProductsList></ProductsList>
-    </div>
+    </ProductWrapper>
   );
 };
 

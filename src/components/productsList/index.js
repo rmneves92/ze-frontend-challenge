@@ -15,7 +15,7 @@ const ProductsList = (props) => {
       algorithm: 'NEAREST',
       lat: '-23.632919',
       long: '-46.699453',
-      now: '2017-08-01T20:00:00.000Z',
+      now: '2021-04-14T15:03:58.291Z',
     },
   }); // passando os parametros  em variables
 
