@@ -1,37 +1,39 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { HomeWrapper } from './style';
 import LocationSearchInput from '../../components/locationSearchInput/index';
 import { useHistory } from 'react-router-dom';
 import Button from '../../components/button/index';
-
-import styled from 'styled-components';
+import Card from '../../components/card/index';
+import { LocationContext } from '../../context/locationContext';
 
 const HomePage = (props) => {
-  let history = useHistory();
+  const history = useHistory();
+  const { location, setLocation } = useContext(LocationContext);
 
-  const Box = styled.div`
-    border-radius: 20px;
-    background-color: #fff;
-    width: 50%;
-    height: 400px;
+  useEffect(() => {
+    setLocation({
+      ...location,
+      coordinates: { lat: null, lng: null },
+      address: '',
+    });
+  }, []);
 
-    box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
-  `;
+  const redirectProductsPage = () => {
+    history.push('/produtos');
+  };
 
   return (
     <HomeWrapper>
-      <h1>Home</h1>
-
-      <Box>
+      <Card>
         <LocationSearchInput></LocationSearchInput>
         <Button
-          handleClick={() => {
-            history.push('/produtos');
-          }}
+          disabled={!location.coordinates.lat && !location.coordinates.lng}
+          color="primary"
+          handleClick={() => redirectProductsPage()}
         >
-          Acançar!
+          Ir
         </Button>
-      </Box>
+      </Card>
     </HomeWrapper>
   );
 };

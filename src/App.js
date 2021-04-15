@@ -7,34 +7,37 @@ import ProductsPage from './pages/products/index';
 import { ApolloProvider } from '@apollo/client';
 import apolloClient from './services/apollo';
 import GlobalStyle from './styles/global';
+import { LocationProvider } from './context/locationContext';
 
 import styled from 'styled-components';
 
 const Content = styled.div`
   min-height: 100vh;
   padding: 50px 0;
-  background-image: linear-gradient(180deg, #ffc500 46%, #00d7ff 100%);
+  background-image: linear-gradient(45deg, #ffc500 20%, #00d7ff 100%);
 `;
 
 function App() {
   return (
-    <ApolloProvider client={apolloClient}>
-      <div>
-        <Navbar />
+    <LocationProvider>
+      <ApolloProvider client={apolloClient}>
+        <div>
+          <Navbar />
 
-        <Content>
-          <BrowserRouter>
-            <Switch>
-              <Route path="/" exact component={HomePage} />
-              <Route path="/produtos" component={ProductsPage} />
-            </Switch>
-          </BrowserRouter>
-        </Content>
+          <Content>
+            <BrowserRouter>
+              <Switch>
+                <Route path="/" exact component={HomePage} />
+                <Route path="/produtos" component={ProductsPage} />
+              </Switch>
+            </BrowserRouter>
+          </Content>
 
-        <Footer />
-        <GlobalStyle />
-      </div>
-    </ApolloProvider>
+          <Footer />
+          <GlobalStyle />
+        </div>
+      </ApolloProvider>
+    </LocationProvider>
   );
 }
 

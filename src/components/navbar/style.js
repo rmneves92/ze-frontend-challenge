@@ -6,11 +6,11 @@ export const Nav = styled.header`
   display: flex;
   box-sizing: border-box;
   align-items: center;
-  min-height: 6vh;
+  min-height: 100px;
 
-  background-color: transparent !important;
+  background-color: #fff !important;
 
-  border: 2px dashed darkblue;
+  opacity: 0.7;
 `;
 
 export const LogoContainer = styled.figure`
@@ -24,4 +24,8 @@ export const Logo = styled.img`
   background: ${({ logo }) => `url(${logo}) center no-repeat `};
   background-size: contain;
   background-size: 30px;
+`;
+
+export const Address = styled.div`
+  font-size: 18px;
 `;
