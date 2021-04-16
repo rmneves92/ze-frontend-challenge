@@ -9,22 +9,15 @@ import { LocationContext } from '../../context/locationContext';
 
 import { Input, DivTest } from './style';
 
-const initialCoordinates = {
-  lat: null,
-  lng: null,
-};
-
-const LocationSearchInput = (props) => {
+const LocationSearchInput = ({ handleSelect }) => {
   const inputRef = useRef();
-
   const [address, setAddress] = useState('');
-  const { location, setLocation } = useContext(LocationContext);
 
-  const handleSelect = async (value) => {
+  const handleSelectAddress = async (value) => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
     setAddress(value);
-    setLocation({ ...location, coordinates: latLng, address: value });
+    handleSelect(latLng);
     inputRef.current.disabled = true;
   };
 
@@ -37,7 +30,6 @@ const LocationSearchInput = (props) => {
   const clear = () => {
     inputRef.current.value = '';
     setAddress('');
-    setLocation({ ...location, coordinates: initialCoordinates, address: '' });
   };
 
   return (
@@ -45,7 +37,7 @@ const LocationSearchInput = (props) => {
       <PlacesAutocomplete
         value={address}
         onChange={setAddress}
-        onSelect={handleSelect}
+        onSelect={handleSelectAddress}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>

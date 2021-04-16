@@ -19,10 +19,10 @@ const Navbar = (props) => {
         <LogoContainer>
           <Logo logo={logo} />
         </LogoContainer>
-        <Address>
+        {/* <Address>
           {location.address}
           {location.address && <Edit onClick={() => redirectHome()} />}
-        </Address>
+        </Address> */}
       </Nav>
     </div>
   );

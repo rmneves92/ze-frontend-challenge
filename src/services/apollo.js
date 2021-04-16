@@ -12,9 +12,6 @@ const link = from([
   errorLink, // catch errors
   new HttpLink({
     uri: 'https://api.code-challenge.ze.delivery/public/graphql',
-    fetchOptions: {
-      mode: 'no-cors',
-    },
   }),
 ]);
 const client = new ApolloClient({

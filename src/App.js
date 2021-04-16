@@ -12,8 +12,15 @@ import { LocationProvider } from './context/locationContext';
 import styled from 'styled-components';
 
 const Content = styled.div`
+  margin: 0 auto;
+  max-width: 1600px;
+  width: 100%;
+  padding-top: 50px;
+  border: 2px dashed black;
+`;
+
+const Background = styled.div`
   min-height: 100vh;
-  padding: 50px 0;
   background-image: linear-gradient(45deg, #ffc500 20%, #00d7ff 100%);
 `;
 
@@ -21,7 +28,7 @@ function App() {
   return (
     <LocationProvider>
       <ApolloProvider client={apolloClient}>
-        <div>
+        <Background>
           <Navbar />
 
           <Content>
@@ -35,7 +42,7 @@ function App() {
 
           <Footer />
           <GlobalStyle />
-        </div>
+        </Background>
       </ApolloProvider>
     </LocationProvider>
   );
