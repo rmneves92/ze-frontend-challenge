@@ -7,3 +7,8 @@ export const HomeWrapper = styled.div`
   align-items: center;
   min-height: 100vh;
 `;
+
+export const SearchContainer = styled.div`
+  width: 50vh;
+  height: 20vh;
+`;

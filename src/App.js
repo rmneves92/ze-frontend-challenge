@@ -1,9 +1,9 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Navbar from './components/navbar/index';
-import Footer from './components/footer/index';
-import HomePage from './pages/home/index';
-import ProductsPage from './pages/products/index';
+import { BrowserRouter, Switch, Route, withRouter } from 'react-router-dom';
+import Header from './components/header';
+import Footer from './components/footer';
+import HomePage from './pages/home';
+import ProductsPage from './pages/products';
 import { ApolloProvider } from '@apollo/client';
 import apolloClient from './services/apollo';
 import GlobalStyle from './styles/global';
@@ -16,20 +16,25 @@ const Content = styled.div`
   max-width: 1600px;
   width: 100%;
   padding-top: 50px;
-  border: 2px dashed black;
+  min-height: 100vh;
+  border: 2px red;
 `;
 
 const Background = styled.div`
-  min-height: 100vh;
-  background-image: linear-gradient(45deg, #ffc500 20%, #00d7ff 100%);
+  background-color: #fafafa;
+  /* background-image: linear-gradient(45deg, #00c5f4 20%, #ffcd00 100%); */
 `;
+
+/**
+
+ */
 
 function App() {
   return (
     <LocationProvider>
       <ApolloProvider client={apolloClient}>
         <Background>
-          <Navbar />
+          <Header />
 
           <Content>
             <BrowserRouter>
@@ -47,5 +52,4 @@ function App() {
     </LocationProvider>
   );
 }
-
 export default App;

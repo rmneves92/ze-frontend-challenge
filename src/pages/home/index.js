@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { HomeWrapper } from './style';
-import LocationSearchInput from '../../components/locationSearchInput/index';
+import React, { useEffect, useState, useRef } from 'react';
+import { HomeWrapper, SearchContainer } from './style';
+import LocationSearchInput from '../../components/locationSearchInput';
 import { useHistory } from 'react-router-dom';
-import Button from '../../components/button/index';
-import Card from '../../components/card/index';
+import Button from '../../components/button';
+import Card from '../../components/card';
 import { LocationContext } from '../../context/locationContext';
-import { useQuery, gql, useLazyQuery } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client';
 import { LOAD_POC } from '../../graphql/queries';
-
+import Spinner from '../../components/spinner';
 const initialCoordinates = {
   lat: null,
   lng: null,
@@ -15,41 +15,67 @@ const initialCoordinates = {
 
 const HomePage = (props) => {
   const [coordinates, setCoordinates] = useState(initialCoordinates);
+  const [visibleButton, setVisibleButton] = useState(false);
+
+  // const { setLocation } = useContext(LocationContext);
+
+  const history = useHistory();
+
+  const inputRef = useRef();
 
   useEffect(() => {
-    localStorage.setItem('pocId', '');
+    // localStorage.setItem('pocId', '');
   }, []);
 
   const [getDistributor, { error, loading, data }] = useLazyQuery(LOAD_POC);
   if (!loading && data) {
-    localStorage.setItem('pocId', data.pocSearch[0].id);
+    console.log(data);
+
+    if (data.pocSearch.length > 0) {
+      localStorage.setItem('pocId', data.pocSearch[0].id);
+    }
   }
 
-  const handleSelect = (data) => {
-    setCoordinates(data);
+  const handleSelect = (coordinates) => {
+    setCoordinates(coordinates);
+    setVisibleButton(true);
+  };
+
+  const handleFocus = () => {
+    inputRef.current.focus();
+    inputRef.current.disabled = false;
+    setVisibleButton(false);
   };
 
   return (
     <HomeWrapper>
-      <Card>
-        <LocationSearchInput handleSelect={handleSelect}></LocationSearchInput>
-        <Button
-          // disabled={!location.coordinates.lat && !location.coordinates.lng}
-          disabled={false}
-          color="primary"
-          handleClick={() =>
-            getDistributor({
-              variables: {
-                algorithm: 'NEAREST',
-                lat: coordinates.lat,
-                long: coordinates.lng,
-                now: new Date().toISOString(),
-              },
-            })
-          }
-        >
-          {loading ? <span>Carregando...</span> : <span>Ir</span>}
-        </Button>
+      <Card color="rgb(247,247,247)">
+        <SearchContainer>
+          <LocationSearchInput
+            handleSelect={handleSelect}
+            handleFocus={handleFocus}
+            ref={inputRef}
+          ></LocationSearchInput>
+
+          {loading && <Spinner />}
+          {!loading && visibleButton && (
+            <Button
+              color="primary"
+              handleClick={() =>
+                getDistributor({
+                  variables: {
+                    algorithm: 'NEAREST',
+                    lat: coordinates.lat,
+                    long: coordinates.lng,
+                    now: new Date().toISOString(),
+                  },
+                })
+              }
+            >
+              Ver produtos disponíveis
+            </Button>
+          )}
+        </SearchContainer>
       </Card>
     </HomeWrapper>
   );

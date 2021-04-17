@@ -1,7 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import Card from '../card/index';
-import Button from '../button/index';
-import { List, Product, Image, Details, Title, Price } from './styles';
+import React from 'react';
+import Card from '../card';
+import {
+  List,
+  Product,
+  Image,
+  Details,
+  Title,
+  Price,
+  ActionsContainer,
+  ActionButton,
+} from './styles';
+import * as R from 'ramda';
 
 const ProductsList = ({ list }) => {
   const formatCurrency = (value) => {
@@ -13,14 +22,12 @@ const ProductsList = ({ list }) => {
 
   return (
     <List>
+      {R.isEmpty(list) && <span>Nenhum produto foi encontrado</span>}
       {list.map((product) => {
         return (
-          <Card key={product.id}>
+          <Card key={product.id} color="#fff">
             <Product>
-              <Image
-                // src={product.images[0].url}
-                alt={product.title}
-              />
+              <Image src={product.images[0].url} alt={product.title} />
 
               <Details>
                 <div>
@@ -30,10 +37,10 @@ const ProductsList = ({ list }) => {
                   </Price>
                 </div>
 
-                <div>
-                  <a>Adicionar</a>
-                  <a>Remover</a>
-                </div>
+                <ActionsContainer>
+                  <ActionButton>Adicionar</ActionButton>
+                  <ActionButton>Remover</ActionButton>
+                </ActionsContainer>
               </Details>
             </Product>
           </Card>

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ProductWrapper = styled.div`
   height: 100%;
-  padding: 20px 80px;
+  padding: 100px 80px;
 `;
 
 export const List = styled.div`

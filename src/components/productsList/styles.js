@@ -31,7 +31,6 @@ export const Details = styled.div`
 export const Image = styled.img`
   height: 100px;
   width: 100px;
-  border: 1px dashed red;
 `;
 
 export const Title = styled.span`
@@ -52,4 +51,14 @@ export const Title = styled.span`
 export const Price = styled.span`
   font-size: 14px;
   font-weight: 700;
+`;
+
+export const ActionsContainer = styled.div`
+  display: flex;
+`;
+
+export const ActionButton = styled.a`
+  color: black;
+  padding-right: 10px;
+  cursor: pointer;
 `;

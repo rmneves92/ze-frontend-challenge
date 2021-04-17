@@ -1,23 +1,8 @@
 import React from 'react';
 import { ButtonContainer } from './style';
-const Button = ({ handleClick, children, color, disabled }) => {
-  const handleColorType = (color) => {
-    switch (color) {
-      case 'primary':
-        return 'blue';
-      case 'secondary':
-        return 'yellow';
-      default:
-        return 'grey';
-    }
-  };
+const Button = ({ handleClick, children, color, width }) => {
   return (
-    <ButtonContainer
-      onClick={handleClick}
-      color={color}
-      handleColorType={handleColorType}
-      disabled={disabled}
-    >
+    <ButtonContainer width={width} onClick={handleClick} color={color}>
       {children}
     </ButtonContainer>
   );

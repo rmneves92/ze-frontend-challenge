@@ -8,7 +8,8 @@ export const Input = styled.input`
   border: none;
 `;
 
-export const DivTest = styled.div`
+export const Field = styled.div`
+  background-color: #fff;
   margin-top: 3px;
   padding: 0 10px;
   font-size: 16px;

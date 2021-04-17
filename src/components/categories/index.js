@@ -1,24 +1,24 @@
 import React from 'react';
-import Button from '../button/index';
-import { List, Product, Image, Details, Title, Price } from './styles';
-const Categories = ({ list }) => {
+import Button from '../button';
+import { CategoryList } from './styles';
+const Categories = ({ list, handleSelect }) => {
   return (
-    <List>
+    <CategoryList>
       {list.map((category) => {
         return (
           <Button
+            width="170px"
             key={category.id}
             color="primary"
             handleClick={() => {
-              setSelectedCategory(category.id);
-              getProducts();
+              handleSelect(category.id);
             }}
           >
             {category.title}
           </Button>
         );
       })}
-    </List>
+    </CategoryList>
   );
 };
 

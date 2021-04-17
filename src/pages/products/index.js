@@ -1,16 +1,10 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { useQuery, useLazyQuery, gql } from '@apollo/client';
-import {
-  ProductWrapper,
-  List,
-  ProductDetails,
-  ProductImage,
-  Product,
-} from './style';
-import ProductsList from '../../components/productsList/index';
-import Categories from '../../components/categories/index';
-import Card from '../../components/card';
-import Button from '../../components/button';
+import { ProductWrapper } from './style';
+import ProductsList from '../../components/productsList';
+import Categories from '../../components/categories';
+
+import Spinner from '../../components/spinner';
 
 import { LocationContext } from '../../context/locationContext';
 
@@ -55,54 +49,16 @@ const ProductsPage = (props) => {
     }
   }, [categoriesQuery.data]);
 
-  const renderCategories = () => {
-    return (
-      <List>
-        {categoriesList.map((category) => {
-          return (
-            <Button
-              color="primary"
-              handleClick={() => {
-                setSelectedCategory(category.id);
-                getProducts();
-              }}
-            >
-              {category.title}
-            </Button>
-          );
-        })}
-      </List>
-    );
-  };
-
-  const renderProducts = () => {
-    return (
-      <List>
-        {productsList.map((product) => {
-          return (
-            <Card>
-              <Product>
-                <ProductImage src={product.images[0].url} alt={product.title} />
-
-                <ProductDetails>
-                  <span>{product.title}</span>
-                  <span>{product.productVariants[0].price}</span>
-                </ProductDetails>
-              </Product>
-            </Card>
-          );
-        })}
-      </List>
-    );
-  };
-
   return (
     <ProductWrapper>
-      <h1>Produtos</h1>
-      {loading && <span>Carregando produtos...</span>}
+      {categoriesList && (
+        <Categories
+          handleSelect={(id) => setSelectedCategory(id)}
+          list={categoriesList}
+        />
+      )}
 
-      {categoriesList && <Categories list={categoriesList} />}
-      {productsList && <ProductsList list={productsList} />}
+      {loading ? <Spinner /> : <ProductsList list={productsList} />}
     </ProductWrapper>
   );
 };

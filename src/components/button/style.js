@@ -1,22 +1,23 @@
 import styled from 'styled-components';
 
 export const ButtonContainer = styled.button`
-  display: inline-block;
-  margin: 0;
-  padding: 10px 16px;
-  border: 0;
-  border-radius: 6px;
-  background-color: ${({ color, handleColorType }) => handleColorType(color)};
-  color: #fff;
+  padding: 10px 24px;
+  border: 2px solid #ffcd00;
+  background-color: #fff;
+  color: #333333;
   text-decoration: none;
-  font-weight: 700;
   font-size: 16px;
   line-height: 1.5;
   text-align: center;
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+  min-width: ${({ width }) => width};
+  box-sizing: border-box;
+  -webkit-box-pack: center;
+  justify-content: center;
+  margin: 4px;
+  flex: 1 1 0%;
+  align-items: center;
 
   &:hover {
-    opacity: 0.5;
+    background-color: #ffcd00;
   }
 `;
