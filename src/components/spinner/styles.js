@@ -16,10 +16,10 @@ export const SpinnerContainer = styled.div`
 `;
 
 export const SpinnerElement = styled.div`
-  border: 0.2em solid rgba(0, 0, 0, 0.1);
-  border-top: 0.2em solid #ffcd00;
+  border: 8px solid rgba(0, 0, 0, 0.1);
+  border-top: 8px solid #fc9921;
   border-radius: 50%;
-  width: 2.28571429rem;
-  height: 2.28571429rem;
+  width: 46px;
+  height: 46px;
   animation: ${spin} 0.6s linear infinite;
 `;

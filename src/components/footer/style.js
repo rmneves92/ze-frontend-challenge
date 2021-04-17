@@ -7,7 +7,7 @@ export const FooterWrapper = styled.footer`
   flex-direction: column;
   position: absolute;
   left: 0;
-  background-color: #333;
+  background-color: #ffc500;
   height: 100px;
   margin: 0 auto;
 `;
@@ -21,7 +21,7 @@ export const LinkContainer = styled.ul`
 `;
 
 export const Link = styled.a`
-  color: #fff;
+  color: #000;
   text-decoration: underline;
   padding-top: 12px;
 `;

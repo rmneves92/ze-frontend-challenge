@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { HomeWrapper, SearchContainer } from './style';
-import LocationSearchInput from '../../components/locationSearchInput';
 import { useHistory } from 'react-router-dom';
+import { useLazyQuery } from '@apollo/client';
+import { HomeWrapper, SearchContainer } from './style';
+import { LocationContext } from '../../context/locationContext';
+import LocationSearchInput from '../../components/locationSearchInput';
+import Spinner from '../../components/spinner';
 import Button from '../../components/button';
 import Card from '../../components/card';
-import { LocationContext } from '../../context/locationContext';
-import { useLazyQuery } from '@apollo/client';
 import { LOAD_POC } from '../../graphql/queries';
-import Spinner from '../../components/spinner';
 const initialCoordinates = {
   lat: null,
   lng: null,
@@ -20,10 +20,10 @@ const HomePage = (props) => {
   // const { setLocation } = useContext(LocationContext);
 
   const history = useHistory();
-
   const inputRef = useRef();
 
   useEffect(() => {
+    inputRef.current.focus();
     // localStorage.setItem('pocId', '');
   }, []);
 

@@ -8,6 +8,7 @@ import { ApolloProvider } from '@apollo/client';
 import apolloClient from './services/apollo';
 import GlobalStyle from './styles/global';
 import { LocationProvider } from './context/locationContext';
+import bg from '../public/assets/background.png';
 
 import styled from 'styled-components';
 
@@ -21,13 +22,9 @@ const Content = styled.div`
 `;
 
 const Background = styled.div`
-  background-color: #fafafa;
-  /* background-image: linear-gradient(45deg, #00c5f4 20%, #ffcd00 100%); */
+  background: url(${bg}) no-repeat center bottom;
+  background-size: 102% 172px;
 `;
-
-/**
-
- */
 
 function App() {
   return (

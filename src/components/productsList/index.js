@@ -1,4 +1,5 @@
 import React from 'react';
+import * as R from 'ramda';
 import Card from '../card';
 import {
   List,
@@ -10,7 +11,6 @@ import {
   ActionsContainer,
   ActionButton,
 } from './styles';
-import * as R from 'ramda';
 
 const ProductsList = ({ list }) => {
   const formatCurrency = (value) => {

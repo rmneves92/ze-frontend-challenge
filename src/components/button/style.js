@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ButtonContainer = styled.button`
   padding: 10px 24px;
-  border: 2px solid #ffcd00;
+  border: 2px solid #666666;
   background-color: #fff;
   color: #333333;
   text-decoration: none;
@@ -18,6 +18,7 @@ export const ButtonContainer = styled.button`
   align-items: center;
 
   &:hover {
-    background-color: #ffcd00;
+    background-color: #ffc500;
+    color: #fff;
   }
 `;
