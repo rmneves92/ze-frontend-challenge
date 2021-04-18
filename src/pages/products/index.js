@@ -8,8 +8,6 @@ import { LocationContext } from '../../context/locationContext';
 import { LOAD_PRODUCTS, LOAD_CATEGORIES } from '../../graphql/queries';
 
 const ProductsPage = (props) => {
-  const { location } = useContext(LocationContext);
-
   const [productsList, setProductsList] = useState([]);
   const [categoriesList, setCategoriesList] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -48,14 +46,22 @@ const ProductsPage = (props) => {
 
   return (
     <ProductWrapper>
-      {categoriesList && (
+      {/* 
+      {(loading && !productsList ) || (categoriesList.loading && !categoriesList) &&
+      (
+        <Spinner />
+      )} */}
+
+      {!categoriesList.loading && (
         <Categories
-          handleSelect={(id) => setSelectedCategory(id)}
+          handleClick={(id) => setSelectedCategory(id)}
           list={categoriesList}
         />
       )}
 
-      {loading ? <Spinner /> : <ProductsList list={productsList} />}
+      {!loading && productsList && <ProductsList list={productsList} />}
+
+      {(loading || categoriesList.loading) && <Spinner />}
     </ProductWrapper>
   );
 };

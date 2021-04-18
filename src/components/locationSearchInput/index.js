@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState } from 'react';
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from 'react-places-autocomplete';
 import { MapPin } from 'react-feather';
-
-import { LocationContext } from '../../context/locationContext';
 
 import { Input, Field } from './style';
 import Spinner from '../spinner';
@@ -20,6 +18,12 @@ const LocationSearchInput = React.forwardRef(
       setAddress(value);
       handleSelect(latLng);
       ref.current.disabled = true;
+    };
+
+    const searchOptions = {
+      componentRestrictions: {
+        country: 'BR',
+      },
     };
 
     const focus = () => {
@@ -38,6 +42,7 @@ const LocationSearchInput = React.forwardRef(
           value={address}
           onChange={setAddress}
           onSelect={handleSelectAddress}
+          searchOptions={searchOptions}
         >
           {({
             getInputProps,
@@ -49,6 +54,7 @@ const LocationSearchInput = React.forwardRef(
               <Field>
                 <MapPin color="#ffcd00" />
                 <Input
+                  data-testid="autocomplete"
                   onClick={() => focus()}
                   ref={ref}
                   {...getInputProps({
@@ -59,6 +65,7 @@ const LocationSearchInput = React.forwardRef(
               </Field>
 
               <div
+                data-testid="options"
                 className="autocomplete-dropdown-container"
                 style={{
                   padding: 10,
@@ -86,6 +93,8 @@ const LocationSearchInput = React.forwardRef(
                       };
                   return (
                     <div
+                      key={suggestion.index}
+                      data-testid="suggestion"
                       {...getSuggestionItemProps(suggestion, {
                         className,
                         style,

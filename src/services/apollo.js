@@ -1,5 +1,6 @@
 import { ApolloClient, InMemoryCache, HttpLink, from } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
+import fetch from 'cross-fetch';
 
 const errorLink = onError(({ graphqlErrors, networkError }) => {
   if (graphqlErrors) {
@@ -12,6 +13,7 @@ const link = from([
   errorLink, // catch errors
   new HttpLink({
     uri: 'https://api.code-challenge.ze.delivery/public/graphql',
+    fetch,
   }),
 ]);
 const client = new ApolloClient({

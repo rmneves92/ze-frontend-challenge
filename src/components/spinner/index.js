@@ -3,7 +3,7 @@ import { SpinnerContainer, SpinnerElement } from './styles';
 
 const Spinner = (props) => {
   return (
-    <SpinnerContainer>
+    <SpinnerContainer data-testid="spinner">
       <SpinnerElement />
     </SpinnerContainer>
   );

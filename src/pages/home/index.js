@@ -27,12 +27,15 @@ const HomePage = (props) => {
     // localStorage.setItem('pocId', '');
   }, []);
 
+  const setLocalStorage = async (id) => {
+    await localStorage.setItem('pocId', id);
+    history.push('/produtos');
+  };
+
   const [getDistributor, { error, loading, data }] = useLazyQuery(LOAD_POC);
   if (!loading && data) {
-    console.log(data);
-
     if (data.pocSearch.length > 0) {
-      localStorage.setItem('pocId', data.pocSearch[0].id);
+      setLocalStorage(data.pocSearch[0].id);
     }
   }
 
@@ -60,7 +63,6 @@ const HomePage = (props) => {
           {loading && <Spinner />}
           {!loading && visibleButton && (
             <Button
-              color="primary"
               handleClick={() =>
                 getDistributor({
                   variables: {

@@ -25,7 +25,6 @@ export const LogoContainer = styled.figure`
 `;
 
 export const Logo = styled.img`
-  background: ${({ logo }) => `url(${logo}) center no-repeat `};
   background-size: contain;
   box-shadow: none;
   box-sizing: content-box;
