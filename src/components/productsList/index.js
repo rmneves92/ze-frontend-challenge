@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as R from 'ramda';
 import Card from '../card';
 import {
@@ -48,6 +49,9 @@ const ProductsList = ({ list }) => {
       })}
     </List>
   );
+};
+ProductsList.propTypes = {
+  list: PropTypes.array.isRequired,
 };
 
 export default ProductsList;

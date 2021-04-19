@@ -4,12 +4,12 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event';
 
-describe('Tests for button component', () => {
+describe('Button', () => {
   it('should render button correctly', () => {
     const onClick = jest.fn();
     render(<Button handleClick={onClick}>test button</Button>);
-    const buttonElement = screen.getByText('test button');
-    userEvent.click(buttonElement);
+    const button = screen.getByText('test button');
+    userEvent.click(button);
 
     expect(onClick).toBeCalled();
   });

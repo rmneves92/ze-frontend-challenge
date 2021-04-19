@@ -1,15 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { HeaderContainer, Logo, LogoContainer, NavContainer } from './style';
 import logo from '../../../public/assets/small-logo.png';
-import { LocationContext } from '../../context/locationContext';
 
 const Header = (props) => {
-  const { location } = useContext(LocationContext);
+  const history = useHistory();
   return (
     <HeaderContainer>
       <NavContainer>
         <LogoContainer>
-          <Logo logo={logo} />
+          <Logo logo={logo} onClick={() => history.push('/')} />
         </LogoContainer>
       </NavContainer>
     </HeaderContainer>

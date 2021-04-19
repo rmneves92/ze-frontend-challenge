@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from '../button';
 import { CategoryList } from './styles';
+
 const Categories = ({ list, handleClick }) => {
   return (
     <CategoryList data-testid="category-list">
@@ -20,6 +22,11 @@ const Categories = ({ list, handleClick }) => {
         })}
     </CategoryList>
   );
+};
+
+Categories.propTypes = {
+  list: PropTypes.array.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default Categories;

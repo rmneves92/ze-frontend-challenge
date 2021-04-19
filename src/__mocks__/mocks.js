@@ -1,7 +1,6 @@
 import { LOAD_CATEGORIES, LOAD_PRODUCTS, LOAD_POC } from '../graphql/queries';
 
 export const SetupGoogleMock = () => {
-  /*** Mock Google Maps JavaScript API ***/
   const google = {
     maps: {
       Marker: class {},

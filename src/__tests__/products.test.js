@@ -1,8 +1,6 @@
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import userEvent from '@testing-library/user-event';
-
 import { MockedProvider } from '@apollo/react-testing';
 import ProductsPage from '../pages/products';
 import { CategoryMock, ProductMock } from '../__mocks__/mocks';

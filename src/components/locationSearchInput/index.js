@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from 'react-places-autocomplete';
 import { MapPin } from 'react-feather';
-
 import { Input, Field } from './style';
 import Spinner from '../spinner';
 
@@ -93,7 +93,7 @@ const LocationSearchInput = React.forwardRef(
                       };
                   return (
                     <div
-                      key={suggestion.index}
+                      key={suggestion.key}
                       data-testid="suggestion"
                       {...getSuggestionItemProps(suggestion, {
                         className,
@@ -112,5 +112,10 @@ const LocationSearchInput = React.forwardRef(
     );
   }
 );
+
+LocationSearchInput.propTypes = {
+  handleSelect: PropTypes.func.isRequired,
+  handleFocus: PropTypes.func.isRequired,
+};
 
 export default LocationSearchInput;

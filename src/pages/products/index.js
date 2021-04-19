@@ -1,10 +1,9 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery, useLazyQuery } from '@apollo/client';
 import { ProductWrapper } from './style';
 import ProductsList from '../../components/productsList';
 import Categories from '../../components/categories';
 import Spinner from '../../components/spinner';
-import { LocationContext } from '../../context/locationContext';
 import { LOAD_PRODUCTS, LOAD_CATEGORIES } from '../../graphql/queries';
 
 const ProductsPage = (props) => {
@@ -46,12 +45,6 @@ const ProductsPage = (props) => {
 
   return (
     <ProductWrapper>
-      {/* 
-      {(loading && !productsList ) || (categoriesList.loading && !categoriesList) &&
-      (
-        <Spinner />
-      )} */}
-
       {!categoriesList.loading && (
         <Categories
           handleClick={(id) => setSelectedCategory(id)}

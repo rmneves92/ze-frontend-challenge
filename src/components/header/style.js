@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import logo from '../../../public/assets/small-logo.png';
 
 export const HeaderContainer = styled.header`
   position: fixed;
@@ -17,6 +18,9 @@ export const NavContainer = styled.header`
   max-width: 1600px;
   width: 100%;
   padding: 0px 80px;
+
+  display: flex;
+  align-items: center;
 `;
 
 export const LogoContainer = styled.figure`
@@ -25,6 +29,7 @@ export const LogoContainer = styled.figure`
 `;
 
 export const Logo = styled.img`
+  background-image: url(${logo});
   background-size: contain;
   box-shadow: none;
   box-sizing: content-box;

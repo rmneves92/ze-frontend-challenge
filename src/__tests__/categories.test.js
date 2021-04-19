@@ -11,7 +11,8 @@ const categoriesMock = [
 ];
 describe('Categories', () => {
   it('should render all buttons correctly', () => {
-    render(<Categories list={categoriesMock} />);
+    const handleClick = jest.fn();
+    render(<Categories list={categoriesMock} handleClick={handleClick} />);
     expect(screen.getAllByRole('button').length).toBe(3);
   });
 
