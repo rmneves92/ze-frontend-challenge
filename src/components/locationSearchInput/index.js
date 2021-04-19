@@ -6,7 +6,6 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 import { MapPin } from 'react-feather';
 import { Input, Field } from './style';
-import Spinner from '../spinner';
 
 const LocationSearchInput = React.forwardRef(
   ({ handleSelect, handleFocus }, ref) => {
@@ -17,13 +16,6 @@ const LocationSearchInput = React.forwardRef(
       const latLng = await getLatLng(results[0]);
       setAddress(value);
       handleSelect(latLng);
-      ref.current.disabled = true;
-    };
-
-    const searchOptions = {
-      componentRestrictions: {
-        country: 'BR',
-      },
     };
 
     const focus = () => {
@@ -36,6 +28,11 @@ const LocationSearchInput = React.forwardRef(
       setAddress('');
     };
 
+    const searchOptions = {
+      componentRestrictions: {
+        country: 'BR',
+      },
+    };
     return (
       <div>
         <PlacesAutocomplete
@@ -75,7 +72,6 @@ const LocationSearchInput = React.forwardRef(
                   borderStyle: 'solid',
                 }}
               >
-                {loading && <Spinner />}
                 {suggestions.map((suggestion) => {
                   const className = suggestion.active
                     ? 'suggestion-item--active'

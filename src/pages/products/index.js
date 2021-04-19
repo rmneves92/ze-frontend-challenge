@@ -27,7 +27,7 @@ const ProductsPage = (props) => {
     if (data) {
       setProductsList(data.poc.products);
     }
-  }, [data]);
+  }, [selectedCategory, data, getProducts]);
 
   const categoriesQuery = useQuery(LOAD_CATEGORIES, {
     variables: {

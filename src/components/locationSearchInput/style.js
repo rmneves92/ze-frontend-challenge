@@ -6,6 +6,10 @@ export const Input = styled.input`
   font-size: 16px;
   width: 100%;
   border: none;
+
+  &:disabled {
+    background-color: #fff;
+  }
 `;
 
 export const Field = styled.div`

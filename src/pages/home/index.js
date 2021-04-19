@@ -14,9 +14,6 @@ const initialCoordinates = {
 };
 
 const HomePage = (props) => {
-  const [coordinates, setCoordinates] = useState(initialCoordinates);
-  const [visibleButton, setVisibleButton] = useState(false);
-
   const history = useHistory();
   const inputRef = useRef();
 
@@ -24,6 +21,9 @@ const HomePage = (props) => {
     inputRef.current.focus();
     localStorage.setItem('pocId', '');
   }, []);
+
+  const [coordinates, setCoordinates] = useState(initialCoordinates);
+  const [visibleButton, setVisibleButton] = useState(false);
 
   const setLocalStorage = async (id) => {
     await localStorage.setItem('pocId', id);
@@ -43,7 +43,6 @@ const HomePage = (props) => {
   };
 
   const handleFocus = () => {
-    inputRef.current.disabled = false;
     inputRef.current.focus();
     setVisibleButton(false);
   };
