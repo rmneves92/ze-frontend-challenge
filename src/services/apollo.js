@@ -10,7 +10,7 @@ const errorLink = onError(({ graphqlErrors, networkError }) => {
   }
 });
 const link = from([
-  errorLink, // catch errors
+  errorLink,
   new HttpLink({
     uri: 'https://api.code-challenge.ze.delivery/public/graphql',
     fetch,
